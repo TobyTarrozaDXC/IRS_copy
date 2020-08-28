@@ -61,7 +61,7 @@ def result():
         languages += language +','
 
     url_api = 'https://imdbrecommender.azurewebsites.net/search/?text=' + text+'&genre='+genres+'&country='+countries+'&language='+languages+'&avg_vote='+rating+'&yeargte='+yeargte+'&yearlte='+yearlte+'\''
-    r = requests.get(url_api) 
+    r = requests.get(url_api)
     query_results = json.loads(r.text)['hits']
     return render_template("results.html", q_exact=query_results, texts=text, genres=input_genre, countries=input_country, langs=input_lang)
 
