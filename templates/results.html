@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block results %}
+    <div class="container">
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-8"><br/>
+                {% for data in q_exact['hits'] %}
+                    <div class="card">
+                        <a href="https://www.imdb.com/title/{{data['_source']['imdb_title_id']}}/" target="_blank">
+                            <div class="card-header">
+                                <h5 class="text-center">{{data["_source"]["original_title"]}} ({{data["_source"]["year"]}})</h5>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text text-justify">{{data["_source"]["description"]}}</p> 
+                            <p class="card-text text-primary"><i class="fas fa-star "></i><strong>{{data["_source"]["avg_vote"]}}</strong>/10</p>
+                            <p class="card-text"><strong>Director: </strong>{{data["_source"]["director"]}}</p>
+                            <p class="card-text"><strong>Actors: </strong>{{data["_source"]["actors"]}}</p>
+                        </div>
+
+                    </div><br/>
+                {% endfor %}
+            </div>
+           
+        </div>
+    </div>
+
+   
+{% endblock %}
+  
